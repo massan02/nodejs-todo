@@ -1,5 +1,7 @@
 # TODOアプリケーション
 
+これは学校の課題で作成したTodoアプリケーションです HTML/CSS/JavaScript,Spec Kit,Claude Codeを用いて作成されました　以下はAIが生成した生成文です（この一文はmassan02が書きました）
+
 シンプルで実用的なバニラ HTML/CSS/JavaScript で実装された TODO アプリケーションです。サーバーレス、フレームワーク不使用で、ブラウザの LocalStorage を使用してタスクを永続化します。
 
 ## 特徴
