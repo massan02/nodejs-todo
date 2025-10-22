@@ -1,0 +1,304 @@
+/* TODOアプリケーション - スタイル */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+#app {
+  min-height: 100vh;
+  padding: 20px 0;
+}
+
+/* ページレイアウト */
+.page-list,
+.page-create,
+.page-detail,
+.page-edit {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* タイトル */
+h1 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+}
+
+/* ボタン共通スタイル */
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* ボタンバリエーション */
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.btn-edit {
+  background-color: #ffc107;
+  color: black;
+  padding: 5px 10px;
+  font-size: 0.9em;
+  margin-left: 5px;
+}
+
+.btn-edit:hover {
+  background-color: #e0a800;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+  padding: 5px 10px;
+  font-size: 0.9em;
+  margin-left: 5px;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+}
+
+/* フォームスタイル */
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+.input-field {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+textarea.input-field {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* 文字数カウント */
+.char-count {
+  font-size: 0.85em;
+  color: #666;
+  margin-top: 4px;
+  text-align: right;
+}
+
+/* フォームアクション */
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+/* タスク一覧 */
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  background-color: #fafafa;
+  transition: background-color 0.2s ease;
+}
+
+.task-item:hover {
+  background-color: #f0f0f0;
+}
+
+.task-item.completed {
+  opacity: 0.6;
+}
+
+.task-item.completed .task-title {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.task-title {
+  cursor: pointer;
+  color: #007bff;
+  text-decoration: underline;
+  flex-grow: 1;
+  padding-right: 10px;
+  word-break: break-word;
+}
+
+.task-title:hover {
+  color: #0056b3;
+}
+
+.task-actions {
+  display: flex;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+/* 空状態 */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #999;
+  font-size: 16px;
+}
+
+/* メッセージ */
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  border: 1px solid #f5c6cb;
+}
+
+.error-message:empty {
+  display: none;
+}
+
+/* タスク情報 */
+.task-info {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+.info-item {
+  margin-bottom: 15px;
+}
+
+.info-item strong {
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.info-item p {
+  margin: 0;
+  color: #666;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.status-badge.completed {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-badge.incomplete {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+/* チェックボックス */
+.form-group label input[type="checkbox"] {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* レスポンシブ */
+@media (max-width: 600px) {
+  .page-list,
+  .page-create,
+  .page-detail,
+  .page-edit {
+    margin: 10px;
+    padding: 15px;
+  }
+
+  .task-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .task-actions {
+    margin-top: 10px;
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+}

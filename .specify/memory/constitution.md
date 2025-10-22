@@ -1,50 +1,97 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+同期影響レポート v2.0.0
+バージョン変更: 1.0.0 → 2.0.0（MAJOR: 原則削除）
+変更された原則: II「テスト駆動開発」削除、III「CLI優先インターフェース」削除
+追加されたセクション: なし
+削除されたセクション: II（テスト駆動開発）、III（CLI優先インターフェース）
+更新後の中核原則数: 5個 → 3個
+テンプレート更新: ✅ plan-template.md 更新必要、✅ spec-template.md 更新必要、✅ tasks-template.md 更新必要
+フォローアップ TODO: 設計書の再作成（フレームワーク削除）
+-->
 
-## Core Principles
+# Node.js タスク管理システム憲法
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+## 中核原則
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### I. シンプルさと実用性
+システムは、早すぎる複雑性よりも、明確で率直なソリューションを優先しなければならない。すべての機能は、ユーザーの問題を解決する最もシンプルな実装から始まる。複雑なパターン（ファクトリー、デコレータ、高度な抽象化）は、複雑さが正当で文書化されている場合にのみ導入される。フレームワークに依存せず、バニラ HTML/CSS/JavaScript を使用する。
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+**根拠**: タスク管理は本質的にシンプルなドメインであり、不要な抽象化は意図を不明確にし、メンテナンス負荷を増加させる。新しい開発者は、あらゆるモジュールを5分以内に理解できるべき。
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+---
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### II. モジュール独立性
+各モジュール（タスク保存、検証、フィルタリング、UI）は独立してテスト可能であり、他との密結合をしてはならない。依存関係は一方向に流れる。循環依存は禁止。
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+**根拠**: 独立したモジュールはテスト、デバッグ、交換が容易。リファクタリングを連鎖的な障害なしに実行可能にする。
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+---
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+### III. インクリメンタルデリバリー
+機能は最小限の実行可能なインクリメントとしてリリースされる。機能のMVPは以下を満たさねばならない：
+- 1つの特定のユーザー問題を終端まで解決
+- 独立してテスト可能
+- 将来の機能なしで有用
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+**根拠**: 継続的に価値を提供する。ユーザーフィードバックを収集しやすい。スコープクリープを減らす。
 
-## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+---
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+## 開発標準
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+### コード品質
+- フォーマット: Prettier（2スペースインデント）
+- `TODO` コメント禁止（イシュー番号なし）。すべての技術債は追跡必須
+- 最大ファイルサイズ: 300行（より大きいモジュールは分割）
+- フレームワーク不使用: バニラ HTML/CSS/JavaScript のみ
+
+### Gitワークフロー
+- コミットメッセージ: Conventional Commits形式 `type(scope): description`
+- 1コミット = 1つの論理的変更（ファイルごとではなく）
+- ブランチ名: `###-feature-name` または `###-bugfix-name`
+- mainへのマージ前にコードレビュー必須
+
+### ドキュメント
+- README.md: インストール、クイックスタート、プロジェクト構造
+- CONTRIBUTING.md: 開発セットアップ、PR指針
+- インラインコメント: *なぜ* を説明。何をするかはコードが語る
+- 各機能は使用例を含む（HTML/JS の例やスクリーンショット）
+
+---
+
+## ガバナンス
+
+### コンプライアンス
+すべてのPRは以下を確認しなければならない：
+1. **憲法準拠**: 機能がシンプルさ、モジュール独立性、インクリメンタルデリバリーの原則と一致
+2. **フレームワーク不使用**: バニラ HTML/CSS/JavaScript のみ使用
+3. **ファイルサイズ**: ファイルが 300 行を超えていない
+4. **ドキュメント**: README またはコード例で機能の使い方を説明
+
+### 修正手続き
+この憲法の修正には以下が必須：
+1. 変更根拠を記載したGitHubイシュー
+2. イシュー内での議論（最短24時間）
+3. プロジェクト保守者の承認
+4. セマンティックバージョニングに従ったバージョン変更（下記参照）
+5. `.specify/templates/` 内のすべての依存テンプレートを更新
+
+### バージョニング方針
+憲法バージョンはセマンティックバージョニングに従う：
+- **MAJOR**: 原則削除/再定義または新しい強制制約（古いワークフローと互換性なし）
+- **MINOR**: 新しい原則追加、または既存ガイダンスの大幅拡張
+- **PATCH**: 明確化、表現の改善、タイプミス修正
+
+### レビューチェックリスト
+PR マージ前に以下を確認：
+- ✅ バニラ HTML/CSS/JavaScript のみ使用（フレームワーク不使用）
+- ✅ 循環依存なし
+- ✅ ファイルが 300 行を超えていない
+- ✅ コミットメッセージが Conventional Commits に従う
+- ✅ 動作変更時はドキュメント更新
+
+詳細な開発ワークフロー指針は、この憲法の原則を参照。機能の使用例と実装ガイドはプロジェクトREADMEを参照。
+
+---
+
+**バージョン**: 2.0.0 | **採択**: 2025-10-22 | **最終修正**: 2025-10-22 (v1.0.0 から修正)
